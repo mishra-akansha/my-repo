@@ -1,0 +1,49 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 22rem;
+}
+
+.illustration {
+  width: 12rem;
+  max-width: 70%;
+  margin-bottom: 1rem;
+}
+
+.illustration svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.hint {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  max-width: 22rem;
+  line-height: 1.5;
+}
+
+.compact {
+  padding: 1.75rem 1rem;
+  min-height: 14rem;
+}
+
+.compact .illustration {
+  width: 8rem;
+}
+
+.compact .title {
+  font-size: 0.875rem;
+}

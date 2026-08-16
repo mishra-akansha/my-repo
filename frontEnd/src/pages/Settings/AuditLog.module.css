@@ -1,0 +1,35 @@
+.errorBox {
+  padding: 2rem;
+  text-align: center;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.errorTitle {
+  color: var(--coral-600);
+  margin-bottom: 0.5rem;
+}
+
+.errorText {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.actorEmail {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.targetType {
+  font-size: 0.8rem;
+}
+
+.metadataCell {
+  max-width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}

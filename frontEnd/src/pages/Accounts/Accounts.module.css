@@ -1,0 +1,394 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 2rem 1.5rem;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.filterRow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cardsWrap {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.addBtn {
+  background: var(--btn-gradient-primary);
+  color: var(--btn-text-color);
+  border: none;
+  border-radius: 0.5625rem;
+  padding: 0.5625rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  box-shadow: var(--btn-shadow);
+  transition: all 0.18s var(--ease);
+}
+
+.addBtn:hover {
+  background: var(--btn-gradient-primary-hover);
+  box-shadow: var(--btn-shadow-hover);
+}
+
+.search {
+  width: 100%;
+  max-width: 20rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  border-radius: 0.5625rem;
+  padding: 0.5625rem 0.8125rem;
+  font-size: 0.8125rem;
+  outline: none;
+  transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+
+.search:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.1875rem var(--primary-bg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16.875rem, 1fr));
+  gap: 0.875rem;
+}
+
+.card {
+  background: var(--glass-bg-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: box-shadow 0.22s var(--ease), border-color 0.22s var(--ease), background 0.22s var(--ease);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-float), var(--shadow-glow);
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--glass-border));
+}
+
+.loadMore {
+  text-align: center;
+  padding: 0.875rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.meta {
+  font-size: 0.7812rem;
+  color: var(--text-secondary);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7188rem;
+  color: var(--text-secondary);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.stats span {
+  background: var(--bg-hover);
+  border: 1px solid var(--border-subtle);
+  padding: 0.2rem 0.6rem;
+  border-radius: 62.4375rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardActions button {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-size: 0.7188rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.375rem;
+  transition: background 0.18s var(--ease), border-color 0.18s var(--ease), color 0.18s var(--ease);
+}
+
+.cardActions button:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary);
+}
+
+.danger {
+  color: var(--coral-600) !important;
+  border-color: var(--coral-100) !important;
+}
+.uP0 { padding: 0; }
+.uListPlain { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.375rem; }
+.uMuted { font-size: 0.8rem; color: var(--text-secondary); }
+.uTextSm { font-size: 0.8rem; }
+.uLabelSm { font-size: 0.85rem; margin-bottom: 0.5rem; }
+.uEmptyFaded { text-align: center; padding: 1.5rem; opacity: 0.45; font-size: 0.8125rem; }
+.detailSubtitle { color: var(--text-secondary); font-size: 0.85rem; }
+
+/* Drawer Redesign Styles */
+.drawerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.drawerHeaderCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.drawerHeaderTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.companyIconBox {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--primary-bg);
+  border: 1px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.drawerTitle {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.drawerMetaChips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.35rem;
+}
+
+.industryPill {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.125rem 0.5rem;
+  border-radius: 62.4375rem;
+  background: var(--bg-chip);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.websiteLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.websiteLink:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.addressRow {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.drawerSectionCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.drawerSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawerSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+}
+
+.drawerEmptyState {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+  padding: 0.25rem 0;
+}
+
+.contactsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contactItemCard {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.contactItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.contactItemName {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.contactItemEmail,
+.contactItemPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.71875rem;
+  color: var(--text-tertiary);
+}
+
+.dealsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dealItemCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.625rem 0.75rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.dealItemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.dealItemName {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dealItemValue {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.customFieldsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.customFieldRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.cfLabel {
+  color: var(--text-secondary);
+}
+
+.cfValue {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+

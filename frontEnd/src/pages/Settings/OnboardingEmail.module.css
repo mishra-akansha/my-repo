@@ -1,0 +1,131 @@
+.layout {
+  /* !important: when this renders as SliderDialog's body content, its
+     ".body > *:last-child" rule (class + pseudo-class = higher specificity
+     than this single class alone) forces display:flex/flex-direction:column
+     on the last child — override it so the grid layout actually applies. */
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 64rem) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.editorColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.fieldHint {
+  color: var(--text-tertiary);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.htmlEditor {
+  width: 100%;
+  min-height: 22rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  padding: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.htmlEditor:disabled {
+  opacity: 0.6;
+}
+
+.placeholderGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.5rem;
+}
+
+.placeholderChip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-hover);
+}
+
+.placeholderChip code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.placeholderChip span {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.secondaryBtn {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.875rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.secondaryBtn:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.secondaryBtn:disabled {
+  opacity: 0.6;
+}
+
+.previewColumn {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+
+.previewHeader {
+  margin-bottom: 0.25rem;
+}
+
+.previewSubject {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.previewFrame {
+  width: 100%;
+  height: 42rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+}

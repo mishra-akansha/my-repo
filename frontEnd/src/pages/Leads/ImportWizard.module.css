@@ -1,0 +1,172 @@
+.uThLeft {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  color: var(--text-secondary);
+}
+
+.uCellPad {
+  padding: 0.5rem 0.75rem;
+}
+
+.uMt6 {
+  margin-top: 1.5rem;
+}
+
+.uMt2 {
+  margin-top: 0.5rem;
+}
+
+.uHint {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.uThSmall {
+  text-align: left;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.uRowBetween {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.uMuted {
+  color: var(--text-secondary);
+}
+
+.uRowDivider {
+  border-bottom: 1px solid var(--border-strong);
+}
+
+/* ---- Additional extracted utility classes ---- */
+.wizardBody { padding: 0; width: 100%; min-width: 0; }
+.stepperRow { display: flex; align-items: center; margin-bottom: 1.5rem; padding: 0 0.5rem; }
+.stepItem { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.stepCircle { width: 1.5rem; height: 1.5rem; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+.stepCircleCurrent { background: var(--primary); color: #fff; border: 2px solid var(--primary); }
+.stepCircleDone { background: var(--primary-bg); color: var(--primary); border: 1px solid var(--border-strong); }
+.stepCirclePending { background: var(--bg-hover); color: var(--text-secondary); border: 1px solid var(--border-strong); }
+.stepLabel { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
+.stepLabelActive { color: var(--text-primary); }
+/* flex:1 (not a fixed width) so the line actually spans the gap between
+   circles regardless of how wide the modal is — a fixed 30px line looked
+   disconnected once the dialog widened to fit the rest of this step's content. */
+.stepConnector { flex: 1; min-width: 1rem; height: 0.0625rem; background: var(--border-strong); margin: 0 0.75rem; }
+.rowBetweenMb { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.labelSm { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
+.sampleBtn { background: transparent; border: none; color: var(--primary); font-size: 0.75rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.25rem; }
+.csvTextarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--bg-surface); color: var(--text-primary); font-family: var(--font-mono, monospace); font-size: 0.75rem; outline: none; box-sizing: border-box; }
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2.5rem 1.5rem;
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.dropzone:hover,
+.dropzoneActive {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+
+.dropzone p {
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+.dropzoneFile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dropzoneClear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+}
+
+.dropzoneClear:hover {
+  color: var(--error);
+}
+
+.uploadFootRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.customFieldsHint {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+}
+.mapTableWrap { max-height: 18.75rem; overflow-y: auto; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); padding: 0.5rem; }
+.plainTable { width: 100%; border-collapse: collapse; }
+.mapRow { border-bottom: 1px solid var(--bg-hover); }
+.mapCellHeader { padding: 0.625rem 0.5rem; font-size: 0.8125rem; font-weight: 600; }
+.mapCellSelect { padding: 0.625rem 0.5rem; }
+.mapSelect { padding: 0.375rem; border-radius: var(--radius-sm); border: 1px solid var(--border-strong); background: var(--bg-surface); color: var(--text-primary); font-size: 0.8125rem; outline: none; }
+.previewWrap { max-height: 18.75rem; display: flex; flex-direction: column; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+.previewTable { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.75rem; }
+.previewThead { background: var(--bg-hover); flex-shrink: 0; }
+.previewBodyScroll { flex: 1; min-height: 0; overflow-y: auto; }
+.previewRow { border-bottom: 1px solid var(--border-subtle); }
+.previewCellName { padding: 0.5rem 0.75rem; font-weight: 600; }
+.missingTag { color: var(--coral-600); font-weight: bold; }
+.emailErrorRow { color: var(--coral-600); font-size: 0.6875rem; margin-top: 0.125rem; display: inline-flex; align-items: center; gap: 0.25rem; }
+.statusChip { font-size: 0.6875rem; padding: 0.125rem 0.375rem; background: var(--bg-hover); border-radius: 0.25rem; }
+.completeWrap { text-align: center; padding: 1.5rem 0; }
+.completeIcon { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: var(--primary-bg); color: var(--primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+.completeTitle { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary); }
+.completeSubtitle { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+.summaryBox { background: var(--bg-hover); border-radius: var(--radius-sm); padding: 1rem; max-width: 20rem; margin: 0 auto 2rem; text-align: left; font-size: 0.8125rem; }
+.summaryValueAccent { font-weight: 700; color: var(--primary); }
+.summaryValue { font-weight: 700; color: var(--text-primary); }
+.summaryTotalRow { display: flex; justify-content: space-between; padding: 0.25rem 0; border-top: 1px solid var(--border-strong); margin-top: 0.5rem; padding-top: 0.5rem; }
+.summaryTotalLabel { font-weight: 600; }
+.summaryTotalValue { font-weight: 700; }
+.doneBtn { min-width: 10rem; }
+
+@media (max-width: 640px) {
+  .stepperRow {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .stepLabel {
+    display: none;
+  }
+
+  .summaryBox {
+    max-width: 100%;
+  }
+}

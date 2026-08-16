@@ -1,0 +1,806 @@
+.page {
+  padding: 0.875rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Overview Mode */
+.overviewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  width: 100%;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+  gap: 0.75rem;
+}
+
+.kpiCard {
+  background: var(--glass-bg-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s var(--ease);
+}
+
+.kpiCard:hover {
+  border-color: rgba(168, 85, 247, 0.35);
+  transform: translateY(-0.0625rem);
+}
+
+.kpiIconWrap {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpiLabel {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.kpiVal {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 0.0625rem;
+}
+
+/* Toolbar */
+.tableToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 13.5rem;
+  max-width: 22rem;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.375rem 0.625rem 0.375rem 1.875rem;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  outline: none;
+  transition: all 0.2s var(--ease);
+}
+
+.searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.1875rem var(--primary-bg);
+}
+
+.teamFilterSelect {
+  padding: 0.375rem 0.625rem;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Performance Table */
+.tableCard {
+  background: var(--glass-bg-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+}
+
+/* Performance table has ~6 columns; on mobile they get crushed under
+   overflow: hidden with no way to reach the clipped cells. Let this card
+   scroll horizontally instead, keeping columns readable. */
+@media (max-width: 640px) {
+  .tableCard {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 40rem;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78125rem;
+  text-align: left;
+}
+
+.table th {
+  padding: 0.625rem 0.875rem;
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.table td {
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.tableRow {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.tableRow:hover {
+  background: var(--bg-hover);
+}
+
+.memberName {
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+}
+
+.memberEmail {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+.teamBadge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-chip);
+  padding: 0.125rem 0.4375rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.valCell {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.numBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.375rem;
+  height: 1.375rem;
+  padding: 0 0.35rem;
+  border-radius: 999rem;
+  background: var(--bg-chip);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.6875rem;
+}
+
+.numBadgeWarning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.rowInspectBtn {
+  background: var(--bg-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.71875rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.15s ease;
+}
+
+.rowInspectBtn:hover {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.emptyTableState {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--text-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78125rem;
+}
+
+/* MODE 2: DEEP DIVE INSPECTOR */
+.deepDiveContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.deepDiveTopNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.backBtn {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 0.3125rem 0.625rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.backBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.teammateSelectorWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selectorLabel {
+  font-size: 0.71875rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.teammateSelect {
+  padding: 0.3125rem 0.5rem;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.profileCard {
+  background: var(--glass-bg-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.125rem;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profileName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.125rem;
+}
+
+.profileMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.71875rem;
+  color: var(--text-secondary);
+}
+
+.profileMetrics {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.pMetricItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.0625rem;
+}
+
+.pMetricLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pMetricVal {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.pMetricDivider {
+  width: 1px;
+  height: 1.5rem;
+  background: var(--border-subtle);
+}
+
+/* Detail Sub-Tabs */
+.detailTabsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  padding: 0.2rem;
+  border-radius: var(--radius-md);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3125rem 0.625rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.tabBtn:hover {
+  color: var(--text-primary);
+}
+
+.activeTab {
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.08);
+}
+
+.tabContentArea {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 0.875rem;
+  box-shadow: var(--glass-shadow);
+  min-height: 15rem;
+}
+
+.rowAssignTaskBtn {
+  background: var(--primary-bg);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.71875rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: all 0.15s ease;
+}
+
+.rowAssignTaskBtn:hover {
+  background: var(--primary);
+  color: var(--btn-text-color);
+}
+
+.taskFilterRow {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.periodLabel {
+  font-size: 0.71875rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  margin-right: 0.25rem;
+}
+
+.periodBtn {
+  background: var(--bg-chip);
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.71875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.periodBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.periodBtnActive {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.contentSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.emptyContentBlock {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--text-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78125rem;
+}
+
+/* Tasks list */
+.dayGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.dayGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.dayGroupLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.dayGroupTasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.dayTaskRow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  transition: all 0.15s ease;
+}
+
+.dayTaskRow:hover {
+  border-color: var(--glass-border-strong);
+  background: var(--bg-hover);
+}
+
+.dayTaskDone {
+  opacity: 0.62;
+}
+
+.taskCheckbox {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  accent-color: var(--primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.typePill {
+  min-width: 3.5rem;
+  color: var(--text-secondary);
+  font-size: 0.71875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.dayTaskBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.dayTaskTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dayTaskTitle:hover {
+  color: var(--primary);
+}
+
+.dayTaskMeta {
+  font-size: 0.71875rem;
+  color: var(--text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inlineSelect {
+  height: 1.625rem;
+  padding: 0 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.71875rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.inlineSelect:hover {
+  border-color: var(--primary);
+}
+
+.priority_LOW {
+  background: rgba(148, 163, 184, 0.14);
+  color: var(--text-secondary);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.priority_MEDIUM {
+  background: rgba(59, 130, 246, 0.14);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.priority_HIGH {
+  background: rgba(245, 158, 11, 0.16);
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.priority_CRITICAL {
+  background: rgba(239, 68, 68, 0.14);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.statusSelect {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.dayTaskDue {
+  font-size: 0.71875rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.taskRowActions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.rowBtn {
+  background: var(--bg-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 0.1875rem 0.4375rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rowBtn:hover {
+  background: var(--bg-surface);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.rowBtnDelete:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.dayTaskDone .dayTaskTitle {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* Deals Cards Grid */
+.dealsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
+  gap: 0.625rem;
+}
+
+.dealCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.625rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.dealHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.dealName {
+  font-size: 0.78125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dealVal {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.dealSub {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+/* Timeline Activity */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.activityCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.activityHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+}
+
+.activityType {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.activityDate {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.activityNotes {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.assignBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--btn-gradient-primary);
+  color: var(--btn-text-color);
+  padding: 0.3125rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition: all 0.15s ease;
+}
+
+.assignBtn:hover {
+  transform: translateY(-0.0625rem);
+}

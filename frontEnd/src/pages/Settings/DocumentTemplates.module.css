@@ -1,0 +1,26 @@
+.starterLink {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.placeholderList {
+  columns: 2;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+  .placeholderList {
+    columns: 1;
+  }
+}
+
+.moduleRowSpaced {
+  margin-top: 0.75rem;
+}
+
+.uploadLabel {
+  margin-top: 0.75rem;
+  display: inline-block;
+  cursor: pointer;
+}

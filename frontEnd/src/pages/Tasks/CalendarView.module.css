@@ -1,0 +1,236 @@
+.calendarWrap {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: auto;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.monthLabel {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.navGroup {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.navBtn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.navBtn:hover {
+  background: var(--bg-hover);
+}
+
+.weekHeader {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.weekdayName {
+  font-size: 0.7188rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(4.6875rem, 1fr));
+  gap: 0.0625rem;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.dayCell {
+  background: var(--bg-surface);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.dayCell:hover {
+  background: var(--bg-hover);
+}
+
+.dayCell:hover .addDayBtn {
+  opacity: 1;
+}
+
+.otherMonth {
+  background: var(--bg-app);
+  opacity: 0.5;
+}
+
+.today {
+  background: var(--primary-bg);
+}
+
+.today .dayNumber {
+  background: var(--primary);
+  color: #fff;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.dayNumberWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.375rem;
+}
+
+.dayNumber {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.addDayBtn {
+  opacity: 0;
+  background: var(--bg-hover);
+  border: 1px solid var(--border-strong);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.addDayBtn:hover {
+  background: var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.taskContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-width: 0;
+  max-height: 5rem;
+  padding-right: 0.125rem;
+}
+
+/* Custom mini scrollbar for task list in day cells */
+.taskContainer::-webkit-scrollbar {
+  width: 0.1875rem;
+}
+
+.taskContainer::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 0.1875rem;
+}
+
+.taskBubble {
+  background: var(--bg-app);
+  border-left: 3.5px solid var(--primary);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.taskBubble:hover {
+  transform: translateY(-0.5px);
+  background: var(--border-subtle);
+}
+
+.taskDone {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.checkbox {
+  width: 0.625rem;
+  height: 0.625rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+  margin: 0;
+}
+
+.taskTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+/* On narrow viewports a 7-column grid squeezes each day cell down to ~40-50px,
+   making day numbers, checkboxes and task bubbles unreadable/untappable.
+   Give the week header + grid a fixed min-width so they scroll horizontally
+   together instead (calendarWrap already has overflow: auto). */
+@media (max-width: 640px) {
+  .calendarWrap {
+    padding: 0.75rem;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .weekHeader,
+  .grid {
+    min-width: 42rem;
+  }
+}

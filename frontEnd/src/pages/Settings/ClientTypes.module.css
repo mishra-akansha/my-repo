@@ -1,0 +1,35 @@
+.colName {
+  width: 30%;
+}
+
+.colDescription {
+  width: 50%;
+}
+
+.colCreated {
+  width: 10%;
+}
+
+.colActions {
+  width: 10%;
+}
+
+.cellName {
+  font-weight: 600;
+}
+
+.cellDescription {
+  color: var(--text-secondary);
+}
+
+.descriptionInput {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  resize: vertical;
+}

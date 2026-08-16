@@ -1,0 +1,470 @@
+/* ==========================================================================
+   Signup — Plan picker & org creation extensions
+   Uses index.css --landing-* variables for full dark/light mode compatibility.
+   ========================================================================== */
+
+.shellWide {
+  grid-template-columns: minmax(360px, 440px) minmax(0, 1fr) !important;
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.cardWide {
+  max-width: 58rem !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cardHeaderTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobileStepBadge {
+  display: none;
+  background: var(--landing-social-bg);
+  border: 1px solid var(--landing-card-border);
+  color: var(--accent-light, #c084fc);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .shellWide {
+    grid-template-columns: minmax(300px, 360px) minmax(0, 1fr) !important;
+  }
+  .cardWide {
+    max-width: 50rem !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .shellWide {
+    grid-template-columns: 1fr !important;
+    max-width: 48rem !important;
+    margin: 0 auto;
+  }
+  .mobileStepBadge {
+    display: inline-block;
+  }
+}
+
+.googleIdentity {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--landing-social-bg);
+  border: 1px solid var(--landing-card-border);
+  color: var(--landing-title-color);
+  font-size: 0.85rem;
+}
+
+.googleIdentity strong {
+  font-weight: 700;
+}
+
+.stepList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.stepList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.stepList li.stepDone {
+  color: #fff;
+}
+
+.stepDot {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.75rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.stepDone .stepDot {
+  border-color: #f472b6;
+  background: rgba(244, 114, 182, 0.2);
+  color: #fff;
+}
+
+/* ---- Plan Grid & Cards ---- */
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.planCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: var(--landing-social-bg);
+  border: 1.5px solid var(--landing-card-border);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.15rem;
+  box-sizing: border-box;
+  min-width: 0; /* Important: prevents grid items from forcing horizontal blowout */
+  overflow: visible;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  outline: none;
+}
+
+.planCard:hover {
+  border-color: var(--landing-social-hover-border);
+  background: var(--landing-social-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.12);
+}
+
+.planCardActive {
+  border-color: #a855f7 !important;
+  background: rgba(168, 85, 247, 0.12) !important;
+  box-shadow: 0 0 0 1px #a855f7, 0 10px 28px rgba(168, 85, 247, 0.22) !important;
+  transform: translateY(-2px);
+}
+
+.planCardPopular {
+  border-color: rgba(236, 72, 153, 0.35);
+}
+
+.popularBadgeWrap {
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.popularBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.7rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(236, 72, 153, 0.4);
+  white-space: nowrap;
+}
+
+.planCardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.planTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.planLabel {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: var(--landing-title-color);
+  letter-spacing: -0.01em;
+}
+
+.planRadio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+}
+
+.planRadioChecked {
+  color: #c084fc;
+}
+
+.planRadioUnchecked {
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--landing-card-border);
+  transition: border-color 0.2s ease;
+}
+
+.planCard:hover .planRadioUnchecked {
+  border-color: #a855f7;
+}
+
+.planPriceWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin: 0.15rem 0 0.25rem 0;
+}
+
+.planPriceMain {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--landing-title-color);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.planPricePeriod {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--landing-subtitle-color);
+}
+
+.planBlurb {
+  font-size: 0.8rem;
+  color: var(--landing-subtitle-color);
+  margin: 0;
+  line-height: 1.35;
+  min-height: 2.1rem;
+}
+
+.planDivider {
+  height: 1px;
+  background: var(--landing-divider);
+  margin: 0.75rem 0 0.85rem 0;
+  width: 100%;
+}
+
+.planFeatures {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+}
+
+.planFeatures li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--landing-subtitle-color);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 0.12rem;
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.14);
+}
+
+.featureDisabled {
+  opacity: 0.45;
+}
+
+.featureDisabled .featureIcon {
+  color: var(--landing-subtitle-color);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Responsive Breakpoints ---- */
+@media (max-width: 780px) {
+  .planGrid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .planBlurb {
+    min-height: auto;
+  }
+
+  .planCard {
+    padding: 1.15rem 1.05rem;
+  }
+
+  .cardWide {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardWide {
+    padding: 1.5rem 1rem;
+    border-radius: 1.25rem;
+  }
+
+  .planLabel {
+    font-size: 1.05rem;
+  }
+
+  .planPriceMain {
+    font-size: 1.35rem;
+  }
+}
+
+.changePlanBtn {
+  background: none;
+  border: none;
+  color: var(--landing-hint-link);
+  font-weight: 600;
+  font-size: inherit;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.topBackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--landing-social-bg);
+  border: 1px solid var(--landing-card-border);
+  border-radius: 9999px;
+  color: var(--landing-title-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.2s var(--ease);
+  margin-bottom: 1.15rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.topBackBtn:hover {
+  background: var(--landing-social-hover-bg);
+  border-color: var(--landing-social-hover-border);
+  color: var(--accent-light, #c084fc);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.16);
+}
+
+.topBackBtn:active {
+  transform: scale(0.96);
+}
+
+.fieldHint {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.formActions > * {
+  width: 100%;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--landing-social-bg);
+  border: 1px solid var(--landing-card-border);
+  border-radius: 0.75rem;
+  color: var(--landing-title-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.75rem 1.15rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backBtn:hover {
+  background: var(--landing-social-hover-bg);
+  border-color: var(--landing-social-hover-border);
+}
+
+.comingSoonWrap {
+  position: relative;
+}
+
+.comingSoonBadge {
+  position: absolute;
+  top: -0.6rem;
+  right: 0.5rem;
+  z-index: 1;
+  background: #a855f7;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 62.4375rem;
+  pointer-events: none;
+}
+
+.comingSoonFields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0.5;
+  filter: grayscale(0.3);
+  pointer-events: none;
+  user-select: none;
+}
+
+.comingSoonBlocker {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: not-allowed;
+  background: transparent;
+}

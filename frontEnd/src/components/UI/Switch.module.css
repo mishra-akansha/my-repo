@@ -1,0 +1,48 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.wrap.disabled {
+  cursor: default;
+}
+
+.track {
+  position: relative;
+  width: 2.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 99rem;
+  background: var(--border-strong);
+  padding: 0;
+  transition: background 0.2s var(--ease);
+}
+
+.track:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.trackOn {
+  background: var(--gradient-brand);
+}
+
+.thumb {
+  position: absolute;
+  top: 0.125rem;
+  left: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}

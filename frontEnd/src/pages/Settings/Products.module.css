@@ -1,0 +1,25 @@
+.pdThName { width: 20%; }
+.pdThSku { width: 10%; }
+.pdThDesc { width: 28%; }
+.pdThPrice { width: 14%; }
+.pdThBilling { width: 13%; }
+.pdThCreated { width: 10%; }
+.pdThActions { width: 5%; }
+
+.pdCellName { font-weight: 600; }
+.pdCellSku { color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.75rem; }
+.pdCellDesc { color: var(--text-secondary); }
+.pdCellPrice { font-weight: 600; color: var(--primary); }
+.pdCellBilling { color: var(--text-secondary); }
+
+.pdTextarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  resize: vertical;
+}

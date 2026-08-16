@@ -1,0 +1,379 @@
+/* ==========================================================================
+   Home Illustrations & Animation Utilities
+   ========================================================================== */
+
+/* ---- Particle float ---- */
+@keyframes particleFloat {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(30px) scale(0.4); opacity: 0; }
+}
+
+@keyframes particleFloat2 {
+  0%   { transform: translateY(0) translateX(0) scale(0.6); opacity: 0; }
+  15%  { opacity: 0.8; }
+  85%  { opacity: 0.8; }
+  100% { transform: translateY(-80vh) translateX(-40px) scale(0.2); opacity: 0; }
+}
+
+/* ---- Shimmer sweep ---- */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* ---- Logo ticker ---- */
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---- Gradient border rotation ---- */
+@keyframes borderRotate {
+  0%   { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+/* ---- Sparkle pop ---- */
+@keyframes sparkle {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50%      { transform: scale(1) rotate(180deg); opacity: 1; }
+}
+
+/* ---- Pulse glow ---- */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.15); }
+}
+
+/* ---- Gentle bob ---- */
+@keyframes gentleBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ---- Slide-in from left for kanban cards ---- */
+@keyframes slideInCard {
+  0%   { transform: translateX(-12px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* ---- Bar grow for charts ---- */
+@keyframes barGrow {
+  0%   { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+/* ---- Email stack ---- */
+@keyframes emailStack {
+  0%   { transform: translateY(-8px) scale(0.95); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ---- Score fill ---- */
+@keyframes scoreFill {
+  0%   { stroke-dashoffset: 157; }
+  100% { stroke-dashoffset: 40; }
+}
+
+/* ---- Gear rotate ---- */
+@keyframes gearRotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ---- Shield pulse ---- */
+@keyframes shieldPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+/* ---- Dot glow (reused from original) ---- */
+.leadDotGlow {
+  filter: drop-shadow(0 0 6px var(--primary-glow));
+}
+
+/* ---- Particles overlay ---- */
+.particlesContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ---- Logo Ticker ---- */
+.tickerWrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.tickerWrap::before,
+.tickerWrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tickerWrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--landing-bg), transparent);
+}
+
+.tickerWrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--landing-bg), transparent);
+}
+
+.tickerTrack {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: max-content;
+  animation: tickerScroll 30s linear infinite;
+}
+
+.tickerTrack:hover {
+  animation-play-state: paused;
+}
+
+.tickerItem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-tertiary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.tickerItem:hover {
+  opacity: 1;
+}
+
+.tickerIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-tertiary);
+  opacity: 0.5;
+}
+
+/* ---- Gradient Border Card ---- */
+.gradientBorderWrap {
+  position: relative;
+  border-radius: 1.35rem;
+  padding: 0.125rem;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    transparent 30%,
+    rgba(168, 85, 247, 0.5) 50%,
+    rgba(236, 72, 153, 0.5) 60%,
+    transparent 80%
+  );
+  animation: borderRotate 4s linear infinite;
+}
+
+@supports (background: conic-gradient(from 0deg, red, blue)) {
+  @property --border-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+}
+
+.gradientBorderInner {
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+/* ---- Shimmer bar ---- */
+.shimmerBar {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.shimmerBar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.08) 40%,
+    rgba(236, 72, 153, 0.12) 60%,
+    transparent 100%
+  );
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* ---- Sparkle element ---- */
+.sparkle {
+  position: absolute;
+  pointer-events: none;
+}
+
+.sparkleSvg {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* ---- Feature illustration scenes ---- */
+.sceneContainer {
+  width: 100%;
+  max-width: 17.5rem;
+  height: 8.75rem;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sceneSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---- Animated Kanban scene ---- */
+.kanbanCard {
+  animation: slideInCard 0.6s ease-out both;
+}
+
+.kanbanCard:nth-child(2) { animation-delay: 0.15s; }
+.kanbanCard:nth-child(3) { animation-delay: 0.3s; }
+
+/* ---- Chart bars ---- */
+.chartBar {
+  transform-origin: bottom;
+  animation: barGrow 0.8s ease-out both;
+}
+
+.chartBar:nth-child(2) { animation-delay: 0.12s; }
+.chartBar:nth-child(3) { animation-delay: 0.24s; }
+.chartBar:nth-child(4) { animation-delay: 0.36s; }
+
+/* ---- Email items ---- */
+.emailItem {
+  animation: emailStack 0.5s ease-out both;
+}
+
+.emailItem:nth-child(2) { animation-delay: 0.15s; }
+.emailItem:nth-child(3) { animation-delay: 0.3s; }
+
+/* ---- Score ring ---- */
+.scoreRing {
+  animation: scoreFill 1.2s ease-out both;
+  animation-delay: 0.3s;
+}
+
+/* ---- Gear ---- */
+.gear {
+  transform-origin: center;
+  animation: gearRotate 8s linear infinite;
+}
+
+/* ---- Shield ---- */
+.shield {
+  animation: shieldPulse 2.5s ease-in-out infinite;
+}
+
+/* ---- Section divider line ---- */
+.sectionDivider {
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  height: 0.0625rem;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.dividerLine {
+  width: 100%;
+  height: 0.0625rem;
+}
+
+.dividerDot {
+  filter: drop-shadow(0 0 4px var(--primary-glow));
+}
+
+/* ---- CountUp text ---- */
+.countUpValue {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+}
+
+/* ---- Typewriter cursor ---- */
+.typewriterCursor {
+  display: inline-block;
+  width: 0.125rem;
+  height: 1.1em;
+  background: #c084fc;
+  margin-left: 0.125rem;
+  vertical-align: text-bottom;
+  animation: pulseGlow 1s step-end infinite;
+}
+
+/* ---- Tilt card 3D ---- */
+.tiltCard {
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+/* ---- Testimonial carousel ---- */
+.carouselContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.carouselSlide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.carouselDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.carouselDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--landing-card-border);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.carouselDotActive {
+  background: #c084fc;
+  width: 1.5rem;
+  border-radius: 0.25rem;
+}

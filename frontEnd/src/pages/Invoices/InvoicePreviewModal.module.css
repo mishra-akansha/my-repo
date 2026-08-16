@@ -1,0 +1,42 @@
+.missingFieldsPanel {
+  padding: 0 2.5rem 1rem;
+}
+
+/* Global overrides for the invoice document markup (injected via an inline
+   <style> tag in InvoicePreviewModal.jsx, so these classes are unscoped). */
+:global(.invoice-totals) {
+  max-width: 100%;
+}
+
+@media (max-width: 40rem) {
+  :global(.invoice-container) {
+    overflow-x: auto;
+  }
+
+  :global(.invoice-card) {
+    padding: 1.25rem;
+  }
+
+  :global(.invoice-header) {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  :global(.invoice-details-grid) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  :global(.payment-totals-row) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  :global(.payment-details) {
+    max-width: 100%;
+  }
+
+  :global(.invoice-totals) {
+    width: 100%;
+  }
+}

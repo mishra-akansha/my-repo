@@ -1,0 +1,53 @@
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-hover) 25%,
+    var(--border-subtle) 37%,
+    var(--bg-hover) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  display: inline-block;
+}
+
+.text {
+  border-radius: 0.25rem;
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+.rounded {
+  border-radius: var(--radius-sm);
+}
+
+.colStack { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
+.colStackTight { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
+.rowFlex1 { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.rowFlex1Tight { flex: 1; display: flex; flex-direction: column; gap: 0.375rem; }
+.rowCenter { display: flex; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border-subtle); }
+.rowCenterCard { display: flex; gap: 1rem; align-items: center; padding: 0.875rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); }
+.cardGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr)); gap: 1.5rem; width: 100%; }
+.card { padding: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 0.875rem; }
+.cardHeaderRow { display: flex; justify-content: space-between; align-items: center; }
+.cardFooterRow { border-top: 1px solid var(--border-subtle); padding-top: 0.75rem; display: flex; justify-content: space-between; }
+.statGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr)); gap: 1rem; }
+.statCard { padding: 1.25rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: 0.5rem; }
+.panelGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.5rem; }
+.panel { padding: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 1rem; }
+.panelBody { display: flex; flex-direction: column; gap: 0.75rem; }
+.pipelineRow { display: flex; gap: 1.5rem; width: 100%; overflow: hidden; }
+.pipelineCol { flex: 1; display: flex; flex-direction: column; gap: 0.875rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.pipelineCard { padding: 0.875rem; background: var(--bg-chip); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); display: flex; flex-direction: column; gap: 0.5rem; }
+.pipelineCardFooter { display: flex; justify-content: space-between; align-items: center; margin-top: 0.25rem; }
+.marginBottomSm { margin-bottom: 0.5rem; }
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

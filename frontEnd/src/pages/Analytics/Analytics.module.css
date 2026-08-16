@@ -1,0 +1,225 @@
+.page {
+  padding: 1.625rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.errorState,
+.emptyState {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+}
+
+.metricCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 1.125rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.metricLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.metricValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+.section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.trendChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  height: 12rem;
+  padding-top: 1rem;
+}
+
+.trendCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  height: 100%;
+}
+
+.trendBarTrack {
+  flex: 1;
+  width: 100%;
+  max-width: 2.5rem;
+  display: flex;
+  align-items: flex-end;
+  background: var(--bg-muted);
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.trendBarFill {
+  width: 100%;
+  background: var(--gradient-brand);
+  border-radius: 0.375rem 0.375rem 0 0;
+  min-height: 0.125rem;
+  transition: height 0.3s var(--ease);
+}
+
+.trendWinRate {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.trendMonth {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 60rem) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .metricsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trendChart {
+    overflow-x: auto;
+  }
+
+  .trendCol {
+    flex: 0 0 auto;
+    min-width: 3.5rem;
+  }
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.table th {
+  text-align: left;
+  padding: 0.5rem 0.625rem;
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.table td {
+  padding: 0.5rem 0.625rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.tdStrong {
+  font-weight: 700;
+}
+
+.leaderboardList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.leaderboardRow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--bg-surface) 72%, var(--bg-app));
+  border: 1px solid var(--border-subtle);
+}
+
+.leaderboardRank {
+  width: 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.leaderboardName {
+  flex: 1;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboardStat {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.leaderboardValue {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.workloadOwner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.workloadOverdue {
+  color: var(--danger-soft-text);
+  font-weight: 700;
+}

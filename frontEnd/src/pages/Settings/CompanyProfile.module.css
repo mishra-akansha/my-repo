@@ -1,0 +1,44 @@
+.logoSection {
+  margin-bottom: 1rem;
+}
+
+.logoRow {
+  margin-top: 0.5rem;
+}
+
+.logoInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.logoInfo > span {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.logoInfo strong,
+.logoUploadedAt {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoThumb {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  border-radius: 0.25rem;
+}
+
+.logoUploadedAt {
+  display: block;
+}
+
+.logoUploadLabel {
+  margin-top: 0.5rem;
+  display: inline-block;
+  cursor: pointer;
+}

@@ -1,0 +1,12 @@
+/* Pure flex passthrough — Topbar (rendered by each page as the first
+   child) stays fixed simply by NOT being inside a scrolling ancestor;
+   each page's own .page wrapper below it owns the actual overflow-y:auto
+   scroll region, so nothing here needs position: sticky. */
+.pageTransition {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+}

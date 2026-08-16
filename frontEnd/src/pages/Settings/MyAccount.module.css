@@ -1,0 +1,30 @@
+.bannerText {
+  margin: 0;
+}
+
+.connectedStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.connectedEmail {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.connectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+@media (max-width: 640px) {
+  .connectedStatus {
+    flex-wrap: wrap;
+  }
+}
